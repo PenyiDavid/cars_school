@@ -20,4 +20,12 @@ Route::middleware('auth')->group(function () {
 
 Route::get('cars', [CarController::class, 'index'])->name('cars.index');
 
+Route::middleware(['auth'])->group(function (){
+    Route::get('cars/{id}', [CarController::class, 'show'])->name('cars.show');
+});
+
+Route::middleware(['auth', 'admin'])->group(function () {
+    Route::get('rents', [RentController::class, 'index'])->name('rents.index');
+});
+
 require __DIR__.'/auth.php';
