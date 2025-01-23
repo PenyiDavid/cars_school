@@ -14,6 +14,7 @@ class CarSeeder extends Seeder
      */
     public function run(): void
     {
+        //3 konkrét autó adatainak feltöltése
         DB::table('cars')->insert([
             [
                 'car_model' => 'Toyota Corolla',
@@ -37,7 +38,7 @@ class CarSeeder extends Seeder
                 'description' => 'Comfortable and powerful',
             ],
         ]);
- 
+        //10 random autó adatainak feltöltése
         Car::factory()->count(10)->create();
     }
 }

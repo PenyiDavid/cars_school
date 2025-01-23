@@ -1,8 +1,10 @@
 <?php
 
-use App\Http\Controllers\CarController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CarController;
+use App\Http\Controllers\RentController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Middleware\AdminMiddleware;
 
 Route::get('/', function () {
     return view('welcome');
@@ -24,8 +26,7 @@ Route::middleware(['auth'])->group(function (){
     Route::get('cars/{id}', [CarController::class, 'show'])->name('cars.show');
 });
 
-Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('rents', [RentController::class, 'index'])->name('rents.index');
-});
+
+Route::get('rents', [RentController::class, 'index'])->middleware(AdminMiddleware::class)->name('rents.index');
 
 require __DIR__.'/auth.php';

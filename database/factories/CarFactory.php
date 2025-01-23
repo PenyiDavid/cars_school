@@ -17,7 +17,10 @@ class CarFactory extends Factory
     public function definition(): array
     {
         return [
+            //ha az egyik sort kihagyjuk, ott NULL-t kap az adatbázisban a mező
+            //a tömbből random módon választ egy elemet
             'car_model' => fake()->randomElement(['Audi', 'BMW', 'Mercedes', 'Opel', 'Ford', 'Toyota', 'Suzuki', 'Mazda', 'Volkswagen', 'Fiat']),
+            //a faker segítségével random értéket generál
             'caution_money' => $this->faker->numberBetween(40000, 70000),
             'km_price' => $this->faker->numberBetween(15, 30),
             'day_price' => $this->faker->numberBetween(8000, 15000),
