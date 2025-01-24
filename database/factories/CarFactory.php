@@ -23,6 +23,7 @@ class CarFactory extends Factory
             //a faker segítségével random értéket generál
             'caution_money' => $this->faker->numberBetween(40000, 70000),
             'km_price' => $this->faker->numberBetween(15, 30),
+            
             'day_price' => $this->faker->numberBetween(8000, 15000),
             'description' => $this->faker->sentence,
         ];
