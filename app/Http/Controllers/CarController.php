@@ -18,4 +18,26 @@ class CarController extends Controller
         $car = Car::findOrFail($id);
         return view('cars.show', compact('car'));
     }
+
+    public function create()
+    {
+        return view('cars.newcar');
+    }
+
+    public function store(Request $request)
+    {
+        $validatedData = $request->validate([
+            'car_model' => 'required|string|max:255',
+            'caution_money' => 'required|integer',
+            'km_price' => 'required|integer',
+            'day_price' => 'required|integer',
+            'description' => 'required|string',
+        ]);
+
+        Car::create($validatedData);
+
+        return redirect()->route('cars.index')->with('success', 'Car created successfully.');
+    }
+
+    
 }

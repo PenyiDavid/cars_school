@@ -26,6 +26,10 @@ Route::middleware(['auth'])->group(function (){
     Route::get('cars/{id}', [CarController::class, 'show'])->name('cars.show');
 });
 
+Route::middleware(['auth'])->group(function () {
+    Route::get('new-car', [CarController::class, 'create'])->name('cars.create');
+    Route::post('new-car', [CarController::class, 'store'])->name('cars.store');
+});
 
 Route::get('rents', [RentController::class, 'index'])->middleware(AdminMiddleware::class)->name('rents.index');
 
